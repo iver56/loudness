@@ -1,21 +1,27 @@
-# libloudness
-A library that implements the ITU BS.1770 loudness algorithm and true peak recommendations for use with e.g. EBU R-128
+# loudness
 
-Originally a c++ port of [libebur128](https://github.com/jiixyj/libebur128), with various optimizations and convenient extensions
-
-## Features
-- Written in c++20
-- Supports [EBU R 128](https://tech.ebu.ch/docs/r/r128.pdf)
-  - M, S and I modes ([EBU Tech 3341](https://tech.ebu.ch/docs/tech/tech3341.pdf)
-  - Loudness range measurements ([EBU Tech 3342](https://tech.ebu.ch/docs/tech/tech3342.pdf))
-  - True peak scanner
-- Additional features based on ITU BS.1770
-  - Median loudness calculation
-  - Calculate global loudness without the relative gating
-- Supports all realistic samplerates
-- Supports both interleaved and non-interleaved input
-- Limited optional multithreading support
+A Python lib (C++ under the hood) for calculating loudness (in LUFS) with the ITU BS.1770 loudness algorithm. Useful for EBU R 128 compliance.
 
 ## Installation
 
-## Usage
+`pip install loudness`
+
+## Usage example
+
+```python
+import numpy as np
+import soundfile as sf
+import loudness
+
+audio, sr = sf.read("audio.wav", dtype="float32")  # shape (samples, channels)
+lufs = loudness.integrated_loudness(audio, sr)
+print(f"{lufs:.2f} LUFS")
+```
+
+Based on [libloudness](https://github.com/nomonosound/libloudness)
+
+## Dev setup
+
+* Install CMake
+* `pip install numpy pybind11 build scikit-build-core`
+* `python -m build --wheel`

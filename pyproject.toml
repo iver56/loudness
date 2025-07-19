@@ -1,0 +1,17 @@
+[build-system]
+requires = ["scikit-build-core>=0.9.6", "pybind11>=2.12", "numpy>=1.22"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "loudness"
+version = "0.1.0"
+description = "Python bindings for libloudness, for calculating integrated loudness in LUFS (ITU BS.1770 / EBU R 128)"
+authors = [
+    {name = "Iver Jordal"},
+    {name = "Magnus Bro Kolstø"},
+]
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.scikit-build]
+cmake.version = ">=3.22"
