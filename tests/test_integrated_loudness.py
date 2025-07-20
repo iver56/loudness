@@ -8,12 +8,20 @@ import soundfile
 TEST_FIXTURES_PATH = Path(__file__).resolve().parent.parent / "test_fixtures"
 
 
+def test_mono():
+    audio, sample_rate = soundfile.read(
+        TEST_FIXTURES_PATH / "p286_011.wav", dtype=np.float32
+    )
+    assert audio.ndim == 1
+    lufs = loudness.integrated_loudness(audio, sample_rate)
+    assert lufs == pytest.approx(-23.05, abs=0.1)
+
 def test_stereo():
     audio, sample_rate = soundfile.read(
         TEST_FIXTURES_PATH / "perfect-alley1.ogg", dtype=np.float32
     )
     lufs = loudness.integrated_loudness(audio, sample_rate)
-    print(f"{lufs:.2f} LUFS")
+    assert lufs == pytest.approx(-20.82, abs=0.1)
 
 
 def test_stereo_wrong_dimension_ordering():
