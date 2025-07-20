@@ -9,7 +9,6 @@ A Python lib (C++ under the hood) for calculating loudness (in LUFS) with the IT
 ## Usage example
 
 ```python
-import numpy as np
 import soundfile as sf
 import loudness
 
