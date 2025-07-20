@@ -17,7 +17,7 @@ lufs = loudness.integrated_loudness(audio, sr)
 print(f"{lufs:.2f} LUFS")
 ```
 
-Based on [libloudness](https://github.com/nomonosound/libloudness)
+Based on [libloudness](https://github.com/nomonosound/libloudness), a stellar C++ implementation by Magnus Bro Kolstø (Nomono).
 
 ## Dev setup
 

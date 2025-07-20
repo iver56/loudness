@@ -7,11 +7,14 @@ name = "loudness"
 version = "0.1.0"
 description = "Python bindings for libloudness, for calculating integrated loudness in LUFS (ITU BS.1770 / EBU R 128)"
 authors = [
-    {name = "Iver Jordal"},
     {name = "Magnus Bro Kolstø"},
+    {name = "Iver Jordal"},
 ]
 readme = "README.md"
 license = {text = "MIT"}
 
 [tool.scikit-build]
 cmake.version = ">=3.22"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
