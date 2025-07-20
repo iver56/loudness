@@ -15,6 +15,3 @@ license = {text = "MIT"}
 
 [tool.scikit-build]
 cmake.version = ">=3.22"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
