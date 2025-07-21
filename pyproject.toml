@@ -12,7 +12,11 @@ authors = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
+dependencies = [
+    "numpy>=1.22,<3",
+]
 urls = { "Homepage" = "https://github.com/iver56/loudness" }
+requires-python = ">=3.9"
 
 [tool.scikit-build]
 cmake.version = ">=3.22"
