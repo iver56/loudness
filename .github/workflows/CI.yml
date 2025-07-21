@@ -67,3 +67,27 @@ jobs:
         with:
           name: sdist
           path: dist/*.tar.gz
+  bundle:
+    needs:
+      - wheels
+      - sdist
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download wheel archives
+        uses: actions/download-artifact@v4
+        with:
+          pattern: wheels-*
+          path: artifacts
+      - name: Download sdist archive
+        uses: actions/download-artifact@v4
+        with:
+          name: sdist
+          path: artifacts
+      - name: Gather all distributions
+        run: |
+          mkdir -p all_dist
+          find artifacts -type f \( -name '*.whl' -o -name '*.tar.gz' \) -exec cp {} all_dist/ \;
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distribution-files
+          path: all_dist
