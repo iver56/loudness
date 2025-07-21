@@ -23,9 +23,9 @@ print(f"{lufs:.2f} LUFS")
 
 ## Performance
 
-loudness is _significantly_ faster than the alternatives:
+loudness is significantly faster than the alternatives:
 
-![Execution time comparison](images/execution_time_comparison.png)
+![Execution time comparison](https://raw.githubusercontent.com/iver56/loudness/main/images/execution_time_comparison.png)
 
 ## Changelog
 
