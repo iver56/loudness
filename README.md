@@ -1,6 +1,6 @@
 # loudness
 
-A Python package (C++ under the hood) for calculating loudness (LUFS) with the ITU BS.1770 loudness algorithm. Useful for EBU R 128 compliance. Takes NumPy arrays as input (support mono and stereo/multichannel). Based on [libloudness](https://github.com/nomonosound/libloudness) (original implementation by Magnus Bro Kolstø, Nomono).
+A Python package (battle-tested C++ under the hood) for calculating integrated loudness (LUFS) with the ITU BS.1770 loudness algorithm. Useful for EBU R 128 compliance. Takes NumPy arrays as input (support mono and stereo/multichannel). Based on [libloudness](https://github.com/nomonosound/libloudness) (original implementation by Magnus Bro Kolstø, Nomono).
 
 ## Installation
 
@@ -20,6 +20,12 @@ audio, sr = sf.read("audio.wav", dtype="float32")  # shape (samples, channels)
 lufs = loudness.integrated_loudness(audio, sr)
 print(f"{lufs:.2f} LUFS")
 ```
+
+## Performance
+
+loudness is _significantly_ faster than the alternatives:
+
+![Execution time comparison](images/execution_time_comparison.png)
 
 ## Dev setup
 
