@@ -27,7 +27,15 @@ loudness is _significantly_ faster than the alternatives:
 
 ![Execution time comparison](images/execution_time_comparison.png)
 
-## Dev setup
+## Changelog
+
+## [0.1.0] - 2025-07-21
+
+Initial release
+
+For the complete changelog, go to [CHANGELOG.md](CHANGELOG.md)
+
+## Development setup
 
 * Install CMake and a C++ compiler
 * `pip install numpy pybind11 build scikit-build-core`

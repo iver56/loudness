@@ -81,21 +81,29 @@ if __name__ == "__main__":
     execution_times = list(times.values())
     colors = ["#FFAF00" if m == "loudness" else "#A0A0A0" for m in methods]
 
-    plt.figure()
+    plt.figure(figsize=(9, 5))
     bars = plt.bar(methods, execution_times, color=colors)
+
+    fastest_time = min(execution_times)
 
     plt.ylabel("Execution time (s)")
     plt.title("Execution times for 5 minutes of mono 48 kHz audio")
 
     for bar, time in zip(bars, execution_times):
+        weight = "bold" if time == fastest_time else "normal"
         plt.text(
             bar.get_x() + bar.get_width() / 2,
             bar.get_height(),
             f"{time:.3f}s",
             ha="center",
             va="bottom",
+            fontweight=weight,
         )
 
     plt.tight_layout()
-    plot_file_path = Path(__file__).resolve().parent.parent / "images" / "execution_time_comparison.png"
+    plot_file_path = (
+        Path(__file__).resolve().parent.parent
+        / "images"
+        / "execution_time_comparison.png"
+    )
     plt.savefig(plot_file_path, dpi=200)
