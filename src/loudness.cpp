@@ -5,6 +5,8 @@
 namespace py = pybind11;
 using Mode  = loudness::Mode;
 
+constexpr double kMinDurationSec = 0.4;
+
 /**
  * Compute integrated loudness (LUFS) for a mono or interleaved buffer.
  *
@@ -27,6 +29,12 @@ double integrated_loudness(
     const std::size_t frames   = static_cast<std::size_t>(buf.shape[0]);
     const unsigned int channels =
         (buf.ndim == 2) ? static_cast<unsigned int>(buf.shape[1]) : 1U;
+
+    const double duration_sec = static_cast<double>(frames) / sample_rate;
+    if (duration_sec < kMinDurationSec)
+        throw py::value_error("audio too short: need at least "
+                              + std::to_string(kMinDurationSec*1000) + " ms, got "
+                              + std::to_string(duration_sec*1000) + " ms");
 
     const float *data = static_cast<const float *>(buf.ptr);
 
@@ -58,5 +66,10 @@ Returns
 -------
 float
     Integrated loudness in LUFS.
+
+Raises
+------
+ValueError
+    If the audio is too short (<400 ms), has too many channels (>64), or the sample_rate is outside the supported range (16-2822400 Hz).
 )pbdoc");
 }
