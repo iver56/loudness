@@ -19,6 +19,7 @@ print(f"{lufs:.2f} LUFS")
 
 ## Dev setup
 
-* Install CMake
+* Install CMake and a C++ compiler
 * `pip install numpy pybind11 build scikit-build-core`
 * `python -m build --wheel`
+* `pytest`
