@@ -25,7 +25,7 @@ print(f"{lufs:.2f} LUFS")
 
 loudness is significantly faster than the alternatives:
 
-![Execution time comparison](https://raw.githubusercontent.com/iver56/loudness/main/images/execution_time_comparison.png)
+![Execution time comparison: loudness: 0.058s, pyebur128: 0.098s, pyloudnorm: 0.283s, pyloudness: 0.541s](https://raw.githubusercontent.com/iver56/loudness/main/images/execution_time_comparison.png)
 
 ## Changelog
 
@@ -42,3 +42,14 @@ For the complete changelog, go to [CHANGELOG.md](CHANGELOG.md)
 * `python -m build --wheel`
 * Install the built wheel
 * `pytest`
+
+## Alternatives (Python)
+
+| Name                                                    | Github stars                                                                | License                                                                   | Last commit                                                                       |
+|---------------------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| [jaxloudnorm](https://github.com/boris-kuz/jaxloudnorm) | ![Github stars](https://img.shields.io/github/stars/boris-kuz/jaxloudnorm)  | ![License](https://img.shields.io/github/license/boris-kuz/jaxloudnorm)   | ![Last commit](https://img.shields.io/github/last-commit/boris-kuz/jaxloudnorm)   |
+| [loudness](https://github.com/iver56/loudness)          | ![Github stars](https://img.shields.io/github/stars/iver56/loudness)        | ![License](https://img.shields.io/github/license/iver56/loudness)         | ![Last commit](https://img.shields.io/github/last-commit/iver56/loudness)         |
+| [PALA](https://github.com/HBB-ThinkTank/PALA)           | ![Github stars](https://img.shields.io/github/stars/HBB-ThinkTank/PALA)     | ![License](https://img.shields.io/github/license/HBB-ThinkTank/PALA)      | ![Last commit](https://img.shields.io/github/last-commit/HBB-ThinkTank/PALA)      |
+| [pyebur128](https://github.com/jodhus/pyebur128)        | ![Github stars](https://img.shields.io/github/stars/jodhus/pyebur128)       | ![License](https://img.shields.io/github/license/jodhus/pyebur128)        | ![Last commit](https://img.shields.io/github/last-commit/jodhus/pyebur128)        |
+| [pyloudness](https://github.com/mr-rigden/pyloudness)   | ![Github stars](https://img.shields.io/github/stars/mr-rigden/pyloudness)   | ![License](https://img.shields.io/github/license/mr-rigden/pyloudness)    | ![Last commit](https://img.shields.io/github/last-commit/mr-rigden/pyloudness)    |
+| [pyloudnorm](https://github.com/csteinmetz1/pyloudnorm) | ![Github stars](https://img.shields.io/github/stars/csteinmetz1/pyloudnorm) | ![License](https://img.shields.io/github/license/csteinmetz1/pyloudnorm)  | ![Last commit](https://img.shields.io/github/last-commit/csteinmetz1/pyloudnorm)  |
