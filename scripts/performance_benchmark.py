@@ -1,15 +1,18 @@
+import importlib.metadata as metadata
 import os
 import time
 from pathlib import Path
 
 import loudness
+import matplotlib.pyplot as plt
 import numpy as np
 import pyebur128
 import pyloudness
 import pyloudnorm
-from pyebur128 import R128State, MeasurementMode
+import torch
+import torchaudio
+from pyebur128 import MeasurementMode, R128State
 from scipy.io.wavfile import write
-import matplotlib.pyplot as plt
 
 
 class timer(object):
@@ -49,6 +52,14 @@ class timer(object):
             print("{}: {:.3f} s".format(self.description, self.execution_time))
 
 
+def get_version(pkg_name, module):
+    try:
+        return metadata.version(pkg_name)
+    except metadata.PackageNotFoundError:
+        return getattr(module, "__version__", "unknown")
+
+
+
 if __name__ == "__main__":
     sample_rate = 48000
     audio = np.random.uniform(-1, 1, (48000 * 300,)).astype("float32")
@@ -76,16 +87,32 @@ if __name__ == "__main__":
         os.unlink("tmp.wav")
     times["pyloudness"] = t.execution_time
 
+    with timer("torchaudio") as t:
+        audio_tensor = torch.from_numpy(audio).unsqueeze(0)
+        lufs_torchaudio = torchaudio.functional.loudness(audio_tensor, sample_rate)
+    times["torchaudio"] = t.execution_time
+
     # Plot the results
-    methods = list(times.keys())
-    execution_times = list(times.values())
-    colors = ["#FFAF00" if m == "loudness" else "#A0A0A0" for m in methods]
+    versions = {
+        "loudness": get_version("loudness", loudness),
+        "pyebur128": get_version("pyebur128", pyebur128),
+        "pyloudnorm": get_version("pyloudnorm", pyloudnorm),
+        "pyloudness": get_version("pyloudness", pyloudness),
+        "torchaudio": (get_version("torchaudio", torchaudio)),
+    }
+
+    sorted_items = sorted(times.items(), key=lambda kv: kv[1])
+    methods, execution_times = zip(*sorted_items)
+    methods = [f"{method} {versions[method]}" for method in methods]
+
+    fastest_time = min(execution_times)
+    colors = []
+    for time in execution_times:
+        color = "#FFAF00" if time == fastest_time else "#A0A0A0"
+        colors.append(color)
 
     plt.figure(figsize=(9, 5))
     bars = plt.bar(methods, execution_times, color=colors)
-
-    fastest_time = min(execution_times)
-
     plt.ylabel("Execution time (s)")
     plt.title("Execution times for 5 minutes of mono 48 kHz audio")
 

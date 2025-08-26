@@ -23,9 +23,9 @@ print(f"{lufs:.2f} LUFS")
 
 ## Performance
 
-loudness is significantly faster than the alternatives:
+loudness is significantly faster than the alternatives when running on CPU:
 
-![Execution time comparison: loudness: 0.058s, pyebur128: 0.098s, pyloudnorm: 0.283s, pyloudness: 0.541s](https://raw.githubusercontent.com/iver56/loudness/main/images/execution_time_comparison.png)
+![Execution time comparison: loudness 0.1.0: 0.056s, pyebur128 0.1.1: 0.096s, torchaudio 2.8.0: 0.282, pyloudnorm 0.1.1: 0.293s, pyloudness 1.1.2: 0.581s](https://raw.githubusercontent.com/iver56/loudness/main/images/execution_time_comparison.png)
 
 ## Changelog
 
