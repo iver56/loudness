@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "loudness"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python bindings for libloudness, for calculating integrated loudness in LUFS (ITU BS.1770 / EBU R 128)"
 authors = [
     {name = "Magnus Bro Kolstø"},
@@ -16,7 +16,7 @@ dependencies = [
     "numpy>=1.22,<3",
 ]
 urls = { "Homepage" = "https://github.com/iver56/loudness" }
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 [tool.scikit-build]
 cmake.version = ">=3.22"

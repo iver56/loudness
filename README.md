@@ -5,7 +5,7 @@ A Python package (battle-tested C++ under the hood) for calculating integrated l
 ## Installation
 
 [![PyPI version](https://img.shields.io/pypi/v/loudness.svg?style=flat)](https://pypi.org/project/loudness/)
-![python 3.9, 3.10, 3.11, 3.12, 3.13](https://img.shields.io/badge/Python-3.9%20|%203.10%20|%203.11%20|%203.12%20|%203.13-blue)
+![python 3.10, 3.11, 3.12, 3.13, 3.14](https://img.shields.io/badge/Python-3.10%20|%203.11%20|%203.12%20|%203.13%20|%203.14-blue)
 ![os: Linux, macOS, Windows](https://img.shields.io/badge/OS-Linux%20%28arm%20%26%20x86--64%29%20|%20macOS%20%28arm%29%20|%20Windows%20%28x86--64%29-blue)
 
 `pip install loudness`
@@ -29,9 +29,15 @@ loudness is significantly faster than the alternatives when running on CPU:
 
 ## Changelog
 
-## [0.1.0] - 2025-07-21
+## [0.2.0] - 2025-12-26
 
-Initial release
+### Added
+
+* Add support for Python 3.14
+
+### Removed
+
+* Remove support for Python 3.9
 
 For the complete changelog, go to [CHANGELOG.md](CHANGELOG.md)
 
