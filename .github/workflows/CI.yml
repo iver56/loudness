@@ -43,7 +43,7 @@ jobs:
             else
               yum install -y libsndfile-devel
             fi
-          CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
+          CIBW_BUILD: "cp310-* cp311-* cp312-* cp313-* cp314-*"
           CIBW_ARCHS: ${{ matrix.cibw_archs }}
           CIBW_TEST_REQUIRES: "numpy pytest soundfile"
           CIBW_TEST_COMMAND: "pytest {project}/tests"
