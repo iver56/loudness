@@ -17,8 +17,23 @@ import soundfile as sf
 import loudness
 
 audio, sr = sf.read("audio.wav", dtype="float32")  # shape (samples, channels)
+
+# Get overall integrated loudness
 lufs = loudness.integrated_loudness(audio, sr)
 print(f"{lufs:.2f} LUFS")
+
+# Get the ungated loudness of a single window (the whole buffer here)
+print(f"{loudness.loudness_window(audio, sr):.2f} LUFS (windowed)")
+
+# Get ungated loudness per window, to analyze loudness over time. Windows are
+# directly comparable, so a threshold statistic is meaningful. Silent windows
+# report -inf.
+lufs_per_window = loudness.loudness_per_window(audio, sr, window_duration_sec=0.5)
+print(f"Windows: {lufs_per_window}")
+
+# Calculate percentage of time above a threshold
+percentage_loud = (lufs_per_window > -30).mean() * 100
+print(f"{percentage_loud:.1f}% of windows are above -30 LUFS")
 ```
 
 ## Performance
